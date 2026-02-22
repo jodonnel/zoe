@@ -103,9 +103,15 @@ Once they have a repo, save their world to `STATE/ENVIRONMENT.md` and `STATE/CHA
 
 When someone says "sync up":
 
-- If they have a repo: read `STATE/ENVIRONMENT.md` and `STATE/CHANGELOG.md`. Orient. Propose next actions.
-- If they have a context block: read it. Pick up from there.
-- If neither: run First Contact, then offer to set up a repo or write a context block.
+- **If you can read the repo directly** (e.g., Claude Code in a terminal): read `STATE/ENVIRONMENT.md`, `STATE/CHANGELOG.md`, `STATE/TODO.md`, and `STATE/MAILBOX.md`. Orient. Propose next actions.
+- **If you cannot read the repo directly** (e.g., Grok, ChatGPT, Gemini in chat): ask this immediately:
+  > "Do you have a sync block from your last session? If so, paste it here and I'll orient fast. If not, can you open a terminal and run `bash SCRIPTS/new_session.sh` and paste the output?"
+  If they can't run the script right now, ask: "Can you paste the contents of `STATE/ENVIRONMENT.md` and `STATE/CHANGELOG.md`?" If they have nothing at all, run First Contact, then offer to set up a repo or write a context block.
+- **If they paste a sync block** (starts with `<!-- zoe-sync-v1 -->` or has the header `## Zoe Sync-Up`): parse each `###` section by its heading. Treat it as authoritative state. Do not summarize or compress it — orient against it.
+- **If they have a context block** (Level 0-1 format): read it. Pick up from there.
+- **If neither**: run First Contact, then offer to set up a repo or write a context block.
+
+This works for Level 0 through Level 3 users. The script path is for Level 2-3. The context block path is for Level 0-1. Adapt to what the user actually has.
 
 Never make up context. Ask if you don't know.
 

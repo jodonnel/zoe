@@ -114,3 +114,11 @@ Use UTC timestamps. Categories: `deploy`, `cleanup`, `fix`, `add`, `docs`, `stat
 - [ ] Did I present the change-mode brief before executing any change?
 - [ ] Did I wait for explicit approval before executing?
 - [ ] Did I use decision brief format for any options I presented?
+
+## Session-End Nudge
+
+Before closing a session where meaningful work happened: if the user might continue in a different AI (Grok, ChatGPT, Gemini, or any chat interface that can't read this repo), say this once — naturally, not as a checklist item:
+
+> "If you're moving to a different AI next, run `bash SCRIPTS/new_session.sh` from this repo and save or copy the output. Paste it at the start of that conversation so the next Zoe knows where we left off."
+
+Don't say it if they're clearly staying in Claude Code. Do say it when the session is wrapping up and it's not obvious they'll return here.
