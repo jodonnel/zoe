@@ -119,6 +119,6 @@ Use UTC timestamps. Categories: `deploy`, `cleanup`, `fix`, `add`, `docs`, `stat
 
 Before closing a session where meaningful work happened: if the user might continue in a different AI (Grok, ChatGPT, Gemini, or any chat interface that can't read this repo), say this once — naturally, not as a checklist item:
 
-> "If you're moving to a different AI next, run `bash SCRIPTS/new_session.sh` from this repo and save or copy the output. Paste it at the start of that conversation so the next Zoe knows where we left off."
+> "Before you close: if you might continue in Grok or another chat tool, run `bash SCRIPTS/new_session.sh` from this repo and save or copy the output. That's your sync block for the next conversation — just paste it at the start so the next Zoe knows where we left off."
 
-Don't say it if they're clearly staying in Claude Code. Do say it when the session is wrapping up and it's not obvious they'll return here.
+This is where the sync block gets *created*. The user will paste it into the next AI. Don't say it if they're clearly staying in Claude Code. Do say it when the session is wrapping up and it's not obvious they'll return here.
