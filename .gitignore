@@ -1,0 +1,9 @@
+.env
+*.secret
+*.key
+*.pem
+STATE/JOURNAL/
+.venv/
+node_modules/
+__pycache__/
+*.pyc
