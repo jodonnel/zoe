@@ -1,80 +1,56 @@
-# Zoe — Your Personal AI Partner
+# Zoe — A system prompt that turns any AI into a real partner
 
-Zoe is a Claude Code setup that gives you a persistent, context-aware AI partner for your work and life.
-
-It's not a product. It's a practice — a way of working with Claude that compounds over time.
-
-## What it is
-
-- A `CLAUDE.md` that defines how Zoe behaves in this directory
-- A `STATE/` directory that persists context across sessions
-- A `SCRIPTS/` directory for automation
-- A simple convention: every change gets logged, every session picks up where the last one left off
-
-## Getting started
-
-### 1. Install Claude Code
-
-```bash
-npm install -g @anthropic-ai/claude-code
-```
-
-You'll need an Anthropic API key or a Claude Code subscription.
-
-### 2. Clone this repo
-
-```bash
-git clone https://github.com/jodonnel/zoe ~/zoe
-cd ~/zoe
-```
-
-### 3. Personalize CLAUDE.md
-
-Open `CLAUDE.md` and replace the `[YOUR NAME]` and `[YOUR TOP PRIORITY]` placeholders with your actual info. The more specific you are, the more useful Zoe becomes.
-
-### 4. Initialize your state
-
-```bash
-bash SCRIPTS/update_state.sh
-```
-
-### 5. Start a session
-
-```bash
-cd ~/zoe
-claude
-```
-
-Say: **"sync up"** — Zoe will read your state and pick up where you left off.
-
-## The core habit
-
-At the start of every session: `sync up`
-After every meaningful change: Zoe logs it to `STATE/CHANGELOG.md` and `STATE/MAILBOX.md`
-
-That's it. The system builds itself over time.
-
-## Directory structure
-
-```
-~/zoe/
-├── CLAUDE.md          # How Zoe behaves — edit this first
-├── STATE/
-│   ├── CHANGELOG.md   # What changed and when
-│   ├── MAILBOX.md     # Context for future sessions
-│   ├── ENVIRONMENT.md # Your machine/stack snapshot (generated)
-│   └── TODO.md        # Active work items
-├── SCRIPTS/
-│   └── update_state.sh  # Snapshot your environment
-└── README.md
-```
-
-## Philosophy
-
-- **Boring is good.** Markdown files and shell scripts outlast frameworks.
-- **State is yours.** Nothing leaves your machine you didn't put there.
-- **Compound interest.** Every logged change makes the next session smarter.
+Paste one file. Get a smart, grounded, no-fluff AI partner that works in ChatGPT, Claude, Grok, Gemini, or anything else.
 
 ---
 
-Built on [Claude Code](https://claude.ai/claude-code) by Anthropic.
+## Zero setup — try it now
+
+Paste this into any AI conversation:
+
+```
+https://gist.github.com/jodonnel/06ad93072e23c25c3da8fe761c575488
+```
+
+If Zoe doesn't introduce herself automatically, add:
+> "Please use the Zoe assistant style above and introduce yourself."
+
+That's it. You have Zoe.
+
+---
+
+## With memory — 3 steps
+
+Zoe can remember your context across sessions if she has a private GitHub repo to live in.
+
+1. Install Git and the GitHub CLI (links in [SETUP.md](SETUP.md))
+2. Run the setup commands in [SETUP.md](SETUP.md) — takes about 5 minutes
+3. Say **"sync up"** at the start of every session
+
+See [SETUP.md](SETUP.md) for the full walkthrough.
+
+---
+
+## What Zoe is NOT
+
+- Not a product. Not a service. Not a subscription.
+- Not tied to any AI — she runs on whatever you already use.
+- Not storing your data anywhere. Your repo, your machine, your files.
+- Not magic. She gets better the more you put in.
+
+---
+
+## What's in this repo
+
+| File | What it does |
+|------|-------------|
+| `ZOE.md` | The system prompt — paste this into any AI |
+| `CLAUDE.md` | Behavior instructions for Claude Code specifically |
+| `STATE/` | Your persistent context: changelog, mailbox, environment, todos |
+| `SCRIPTS/` | Shell scripts for snapshotting your environment |
+| `SETUP.md` | Step-by-step setup guide for the memory path |
+
+---
+
+*Lineage: Red Hat · Fedora · upstream Linux. Raised in public.*
+*Source: https://gist.github.com/jodonnel/06ad93072e23c25c3da8fe761c575488*
