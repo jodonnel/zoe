@@ -1,6 +1,5 @@
 # Larry's Zoe Workflow — Claude Code + Worktree Pattern
 
-**User:** Larry Farrell (larspage)
 **AI:** Claude Code (terminal, always — no multi-AI switching)
 **OS:** Fedora 43 / Linux
 **Date documented:** 2026-03-21
@@ -131,6 +130,3 @@ context bleeds into one long CHANGELOG and Zoe has to search for what's relevant
 each project session starts clean with exactly its own state, and the ~/zoe/ root stays
 focused on cross-project orientation.
 
----
-
-*Zoe repo: https://github.com/larspage/zoe*
