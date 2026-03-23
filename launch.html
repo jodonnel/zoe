@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Zoe</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0f0f13;
+    color: #e0ddd6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  .container { max-width: 560px; width: 100%; }
+
+  header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+    font-weight: 300;
+    color: #c8b0e8;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+
+  .tagline {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: #888;
+    line-height: 1.5;
+  }
+
+  .step {
+    margin-bottom: 28px;
+  }
+
+  .step-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #c8b0e8;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 10px;
+  }
+
+  .step p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #aaa;
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+
+  .platform-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .platform-btn {
+    background: #1a1a22;
+    border: 1px solid #2a2a35;
+    border-radius: 8px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+
+  .platform-btn:hover {
+    border-color: #c8b0e8;
+    background: #1f1f2a;
+  }
+
+  .platform-btn .name {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #e0ddd6;
+    margin-bottom: 4px;
+  }
+
+  .platform-btn .action {
+    font-size: 0.75rem;
+    color: #888;
+  }
+
+  .platform-btn.copied {
+    border-color: #7ecf8a;
+  }
+
+  .platform-btn.copied .action {
+    color: #7ecf8a;
+  }
+
+  .copy-prompt {
+    background: #1a1a22;
+    border: 1px solid #2a2a35;
+    border-radius: 8px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .copy-prompt:hover {
+    border-color: #c8b0e8;
+    background: #1f1f2a;
+  }
+
+  .copy-prompt .name {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #e0ddd6;
+    margin-bottom: 4px;
+  }
+
+  .copy-prompt .action {
+    font-size: 0.75rem;
+    color: #888;
+  }
+
+  .copy-prompt.copied { border-color: #7ecf8a; }
+  .copy-prompt.copied .action { color: #7ecf8a; }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #1a1a22;
+    margin: 32px 0;
+  }
+
+  .url-box {
+    background: #111118;
+    border: 1px solid #2a2a35;
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: #c8b0e8;
+    word-break: break-all;
+    margin-bottom: 10px;
+    user-select: all;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.75rem;
+    color: #444;
+  }
+
+  footer a { color: #c8b0e8; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  .or {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #555;
+    margin: 16px 0;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>Zoe</h1>
+    <div class="tagline">Your AI partner. Works with any model.<br>Pick your AI. Paste. Go.</div>
+  </header>
+
+  <div class="step">
+    <div class="step-label">Step 1 &mdash; Copy the prompt</div>
+    <p>This is everything Zoe needs to know. One click copies it to your clipboard.</p>
+    <div class="copy-prompt" onclick="copyPrompt(this)">
+      <div class="name">Copy Zoe System Prompt</div>
+      <div class="action">click to copy to clipboard</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="step">
+    <div class="step-label">Step 2 &mdash; Open your AI</div>
+    <p>Pick one. Paste the prompt. Say hi.</p>
+    <div class="platform-grid">
+      <div class="platform-btn" onclick="openAI('https://claude.ai/new', this)">
+        <div class="name">Claude</div>
+        <div class="action">open &rarr;</div>
+      </div>
+      <div class="platform-btn" onclick="openAI('https://chatgpt.com/', this)">
+        <div class="name">ChatGPT</div>
+        <div class="action">open &rarr;</div>
+      </div>
+      <div class="platform-btn" onclick="openAI('https://gemini.google.com/app', this)">
+        <div class="name">Gemini</div>
+        <div class="action">open &rarr;</div>
+      </div>
+      <div class="platform-btn" onclick="openAI('https://grok.com/', this)">
+        <div class="name">Grok</div>
+        <div class="action">open &rarr;</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="step">
+    <div class="step-label">Or &mdash; just paste this URL into any AI</div>
+    <p>Some AIs can read URLs directly. Give it a shot.</p>
+    <div class="url-box">https://jodonnel.github.io/zoe/ZOE.md</div>
+    <div class="copy-prompt" onclick="copyURL(this)">
+      <div class="name">Copy URL</div>
+      <div class="action">click to copy</div>
+    </div>
+  </div>
+
+  <footer>
+    <a href="https://github.com/jodonnel/zoe">github.com/jodonnel/zoe</a><br>
+    Nobody owns Zoe. Including us.
+  </footer>
+
+</div>
+
+<script>
+const ZOE_MD_URL = 'https://jodonnel.github.io/zoe/ZOE.md';
+
+async function copyPrompt(el) {
+  try {
+    const resp = await fetch(ZOE_MD_URL);
+    const text = await resp.text();
+    await navigator.clipboard.writeText(text);
+    el.classList.add('copied');
+    el.querySelector('.action').textContent = 'copied!';
+    setTimeout(() => {
+      el.classList.remove('copied');
+      el.querySelector('.action').textContent = 'click to copy to clipboard';
+    }, 3000);
+  } catch(e) {
+    // Fallback: copy the URL instead
+    await navigator.clipboard.writeText(ZOE_MD_URL);
+    el.classList.add('copied');
+    el.querySelector('.action').textContent = 'copied URL (prompt fetch blocked)';
+    setTimeout(() => {
+      el.classList.remove('copied');
+      el.querySelector('.action').textContent = 'click to copy to clipboard';
+    }, 3000);
+  }
+}
+
+function openAI(url, el) {
+  window.open(url, '_blank');
+  el.querySelector('.action').textContent = 'opened!';
+  setTimeout(() => {
+    el.querySelector('.action').textContent = 'open \u2192';
+  }, 2000);
+}
+
+async function copyURL(el) {
+  await navigator.clipboard.writeText(ZOE_MD_URL);
+  el.classList.add('copied');
+  el.querySelector('.action').textContent = 'copied!';
+  setTimeout(() => {
+    el.classList.remove('copied');
+    el.querySelector('.action').textContent = 'click to copy';
+  }, 3000);
+}
+</script>
+</body>
+</html>
