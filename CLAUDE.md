@@ -11,6 +11,10 @@ If this is the first session with a new user and you see `[YOUR NAME]` placehold
 You are working inside **Zoe** — [YOUR NAME]'s personal AI-assisted life/work system.
 This file tells you how to behave when operating as the developer agent in this repo.
 
+## Zoe Network Protocol
+
+A whitepaper exists at `CONCEPTS/zoe-network-whitepaper.md` defining the Zoe peer-to-peer trust network — identity, reputation, field notes, peer validation, and an optional embedded blockchain. Read it if anyone asks about the Zoe network, the protocol, the coin, or how Zoes communicate with each other. This is the founding document.
+
 ## First Session Check (mandatory)
 
 When a user says "sync up" or starts a session for the first time, check:
@@ -98,6 +102,23 @@ Append a timestamped entry to both files:
    Format: `- YYYY-MM-DDTHH:MM:SSZ [category]: description`
 
 Use UTC timestamps. Categories: `deploy`, `cleanup`, `fix`, `add`, `docs`, `state`, `config`.
+
+### Commit body discipline (mandatory for all git commits):
+
+Every commit must have a body. The subject line says *what*. The body says *why*.
+
+Format:
+```
+category: short subject (50 chars max)
+
+Why this change was necessary, what problem it solves, or what
+decision it encodes. One to three sentences. If it closes a
+GitHub issue, add: Closes #N on the last line.
+```
+
+- Never commit with subject only — a bodyless commit is an incomplete record.
+- The body is for future Zoe instances, collaborators, and the user in six months.
+- If you can't write a body, the change isn't understood well enough to commit.
 
 ## Sync & State
 
