@@ -2,7 +2,7 @@
 
 **Purpose:** This document describes the current working architecture of Zoe — a local-first personal AI assistant built on OpenClaw, Ollama, and Granite. It's written so that another Zoe instance (or the human building one) can read it and adopt what's useful.
 
-**Author:** Jim O'Donnell + Chloe
+**Source:** Community contribution
 **Date:** 2026-04-09
 
 ---
@@ -170,15 +170,15 @@ I don't phone home. I don't need the internet to think.
 - If I learn something worth keeping, I ask before writing it down.
 ```
 
-## The Relationship Between Chloe and Zoe
+## The Relationship Between Reference Implementations and Zoe
 
-**Chloe** is Jim O'Donnell's personal AI framework. She's the reference implementation — sovereign, domain-specific, full-fidelity. Chloe knows Jim's accounts, farm, family, career. Chloe orchestrates.
+A *reference implementation* is a full-fidelity personal AI: sovereign, domain-specific, knows the user's accounts, contacts, projects, and context. It orchestrates.
 
-**Zoe** is the open derivative. She inherits Chloe's architecture and behavioral patterns but none of Chloe's private context. Zoe is what you hand to someone else.
+**Zoe** is the open derivative. She inherits the reference implementation's architecture and behavioral patterns but none of its private context. Zoe is what you hand to someone else.
 
-The analogy: **Chloe is the operating system. Zoe instances are the applications.** Chloe coordinates, delegates, and synthesizes. Zoe executes locally on constrained hardware for a specific user.
+The analogy: **the reference implementation is the operating system. Zoe instances are the applications.** The reference coordinates, delegates, and synthesizes. Zoe executes locally on constrained hardware for a specific user.
 
-You don't need Chloe to run Zoe. Zoe is fully independent.
+You don't need a reference implementation to run Zoe. Zoe is fully independent.
 
 ## Fine-Tuning with InstructLab (Optional, Proven)
 
@@ -296,17 +296,17 @@ Google Meet (browser audio)
 - **STT model:** `distil-small.en` via faster-whisper (knowledge-distilled Whisper — 6x faster, minimal accuracy loss). `tiny.en` is too small for accented speech.
 - **Advisory model:** Granite 3.2 8B via local Ollama (no cloud, no API cost)
 - **Config:** `tools/meeting-advisor/config.yaml` — model endpoint, interval, notification mode
-- All local. All Zoe's job. The orchestrator (Chloe/Claude Code) never touches it unless asked.
+- All local. All Zoe's job. The orchestrator (if any) never touches it unless asked.
 
 ## What Claude Code Is and Isn't
 
-Claude Code is Anthropic's CLI agent. It's powerful — file access, shell, MCP, web search. Jim uses it as Chloe's primary runtime.
+Claude Code is Anthropic's CLI agent. It's powerful — file access, shell, MCP, web search. It works well as a Zoe runtime.
 
 **Claude Code is NOT Zoe.** Claude Code requires an Anthropic API subscription. It runs Opus/Sonnet/Haiku — large cloud models. It's the premium tier.
 
 **Zoe runs locally for free.** OpenClaw + Ollama + Granite. No subscription. No cloud dependency.
 
-**The relationship:** Chloe runs on Claude Code (cloud, full power). Zoe runs on OpenClaw (local, sovereign). Chloe delegates peripheral tasks to Zoe instances. They complement each other.
+**The relationship:** A cloud AI runs on Claude Code (cloud, full power). Zoe runs on OpenClaw (local, sovereign). The cloud AI can delegate peripheral tasks to Zoe instances. They complement each other.
 
 **If you're building a Zoe and using Claude Code:** That works fine for development, but your Zoe shouldn't depend on Claude Code for operation. The goal is a Zoe that runs independently on OpenClaw + Ollama.
 
@@ -319,11 +319,11 @@ Claude Code is Anthropic's CLI agent. It's powerful — file access, shell, MCP,
 5. **Honesty over confidence.** "I don't know" is a valid answer.
 6. **Pull, not push.** Zoe instances choose what to adopt. No forced updates.
 7. **Privacy by design.** Personal data never leaves the local instance.
-8. **The bar:** Easier than what Jim went through to get Chloe running.
+8. **The bar:** Easier than building a full-fidelity personal AI from scratch.
 
 ## Getting Unstuck
 
-If your Zoe is off the rails with Claude Code, the most common issue is conflating Chloe and Zoe. Zoe should:
+If your Zoe is off the rails with Claude Code, the most common issue is conflating a full-fidelity personal AI and Zoe. Zoe should:
 
 1. **Have her own identity file** (`zoe.md`) that she reads at startup
 2. **Run on a local model** (Granite via Ollama), not depend on cloud APIs
