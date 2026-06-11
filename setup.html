@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zoe + Hermes — Quick Start</title>
+<style>
+  :root { --rh-red:#ee0000; --bg:#fafafa; --surface:#ffffff; --border:#e0e0e0; --text:#1a1a1a; --muted:#666; --blue:#0066cc; --code-bg:#f4f4f4; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--text); font-family:'Red Hat Text','Overpass',system-ui,sans-serif; font-size:15px; line-height:1.7; padding:2rem 1.5rem; max-width:780px; margin:0 auto; }
+  header { border-bottom:3px solid var(--rh-red); padding-bottom:1rem; margin-bottom:2rem; }
+  h1 { font-size:1.6rem; font-weight:700; }
+  h1 span { color:var(--rh-red); }
+  .subtitle { color:var(--muted); font-size:.88rem; margin-top:.3rem; }
+  h2 { font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--rh-red); font-weight:700; margin:2rem 0 .75rem; border-bottom:1px solid var(--border); padding-bottom:.4rem; }
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:1.25rem; margin-bottom:1rem; }
+  .card-title { font-weight:700; font-size:1rem; margin-bottom:.4rem; }
+  .card p, .card li { font-size:.9rem; color:#444; }
+  .card ul { padding-left:1.2rem; margin-top:.4rem; }
+  .card li { margin-bottom:.3rem; }
+  pre { background:var(--code-bg); border:1px solid var(--border); border-radius:6px; padding:1rem; font-size:.85rem; overflow-x:auto; line-height:1.5; margin:.75rem 0; }
+  code { font-family:'Red Hat Mono','Courier New',monospace; font-size:.85rem; }
+  .inline-code { background:var(--code-bg); padding:.15rem .4rem; border-radius:3px; font-size:.82rem; }
+  .step { display:flex; gap:1rem; margin-bottom:1.25rem; }
+  .step-num { background:var(--rh-red); color:#fff; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.82rem; flex-shrink:0; margin-top:.1rem; }
+  .step-body { flex:1; }
+  .step-body h3 { font-size:.95rem; font-weight:700; margin-bottom:.3rem; }
+  .step-body p { font-size:.88rem; color:#444; }
+  .callout { border-left:3px solid var(--blue); background:#f0f7ff; padding:.75rem 1rem; margin:1rem 0; font-size:.88rem; border-radius:0 4px 4px 0; }
+  .time { display:inline-block; background:var(--rh-red); color:#fff; font-size:.72rem; font-weight:700; padding:.15rem .5rem; border-radius:3px; margin-bottom:.5rem; }
+  footer { margin-top:2.5rem; padding-top:1rem; border-top:1px solid var(--border); font-size:.75rem; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1><span>Zoe</span> + Hermes — Quick Start</h1>
+  <div class="subtitle">Your AI assistant running locally on your Linux laptop. 5 minutes to first conversation.</div>
+</header>
+
+<h2>What You're Getting</h2>
+<div class="card">
+  <div class="card-title">Zoe</div>
+  <p>An open-source AI assistant that lives in a Git repo on your machine. She remembers your context across sessions, tracks your work, and helps with account prep, email drafts, meeting notes, research — whatever you throw at her.</p>
+</div>
+<div class="card">
+  <div class="card-title">Hermes Agent</div>
+  <p>The terminal interface. Hermes gives Zoe access to your filesystem, a browser, code execution, and a <strong>kanban board</strong> for tracking work visually. Think of it as the cockpit.</p>
+</div>
+
+<h2>Setup</h2>
+
+<span class="time">5 minutes</span>
+
+<div class="step">
+  <div class="step-num">1</div>
+  <div class="step-body">
+    <h3>Prerequisites</h3>
+    <p>You need Git, Python 3, and pip. On Fedora/RHEL:</p>
+    <pre>sudo dnf install git python3 python3-pip</pre>
+    <p>Optional but recommended — GitHub CLI for persistent memory:</p>
+    <pre>sudo dnf install gh
+gh auth login</pre>
+  </div>
+</div>
+
+<div class="step">
+  <div class="step-num">2</div>
+  <div class="step-body">
+    <h3>Run the installer</h3>
+    <p>One command. It installs Hermes, clones Zoe, and walks you through API setup:</p>
+    <pre>bash <(curl -sL https://raw.githubusercontent.com/jodonnel/zoe/main/SCRIPTS/hermes-setup.sh)</pre>
+    <p>Or if you prefer to inspect it first:</p>
+    <pre>curl -sL https://raw.githubusercontent.com/jodonnel/zoe/main/SCRIPTS/hermes-setup.sh -o hermes-setup.sh
+cat hermes-setup.sh
+bash hermes-setup.sh</pre>
+  </div>
+</div>
+
+<div class="step">
+  <div class="step-num">3</div>
+  <div class="step-body">
+    <h3>Choose your model provider</h3>
+    <p>The installer will ask. Easiest options for Red Hat:</p>
+    <div class="card" style="margin-top:.5rem">
+      <div class="card-title">Option A: Red Hat MaaS (free, internal)</div>
+      <ul>
+        <li>Go to <a href="https://demo.redhat.com">demo.redhat.com</a></li>
+        <li>Search "Model as a Service"</li>
+        <li>Order the environment — you'll get an API key in the confirmation email</li>
+        <li>Models: Granite 3.2, Qwen3 14B, DeepSeek R1, Llama Scout</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Option B: xAI / Grok (free tier)</div>
+      <ul>
+        <li>Sign up at <a href="https://console.x.ai">console.x.ai</a></li>
+        <li>Create an API key</li>
+        <li>Model: grok-3 (very capable, fast)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="step">
+  <div class="step-num">4</div>
+  <div class="step-body">
+    <h3>Personalize</h3>
+    <p>Open <span class="inline-code">~/zoe/CLAUDE.md</span> in your editor. Replace the placeholders with your name, your role, and what you're working on. This is how Zoe knows who you are.</p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="step-num">5</div>
+  <div class="step-body">
+    <h3>Launch</h3>
+    <pre>cd ~/zoe && hermes</pre>
+    <p>First thing to say: <em>"Sync up. Read my state files and tell me what you see."</em></p>
+  </div>
+</div>
+
+<h2>The Kanban</h2>
+<div class="callout">
+This is the thing I wanted you to see. Run <span class="inline-code">hermes board</span> — Zoe breaks your work into tasks, tracks status, and you can see everything at a glance. Say "break this into tasks" during any conversation and she'll populate the board.
+</div>
+
+<h2>Daily Habit</h2>
+<div class="card">
+  <p>Start every session with <strong>"sync up"</strong>. Zoe reads her state files, knows where you left off, and picks up from there. That's it — one phrase, every time.</p>
+</div>
+
+<h2>Questions?</h2>
+<div class="card">
+  <p>Ping me. This is the same stack I run daily — just scoped for you.</p>
+  <p style="margin-top:.5rem;color:var(--muted);font-size:.82rem;">— Jim</p>
+</div>
+
+<footer>Internal — Red Hat &nbsp;&middot;&nbsp; Zoe is open source (Apache 2.0) &nbsp;&middot;&nbsp; github.com/jodonnel/zoe</footer>
+
+</body>
+</html>
