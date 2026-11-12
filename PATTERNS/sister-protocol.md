@@ -147,7 +147,7 @@ All instances read and write the same files. Last-writer-wins on non-coordinatio
 ```
 ## 2026-06-07T14:30:00Z — Instance-Build — BLOCK
 
-Stopped mid-task: Sealed Air HTML brief is 80% complete.
+Stopped mid-task: ACME HTML brief is 80% complete.
 Output at: ~/chloe/STATE/sealed-air-brief-2026-06-07.html
 Remaining: confidence assessment section and pre-call checklist.
 Next instance: pick up from line 847 in the HTML file.
